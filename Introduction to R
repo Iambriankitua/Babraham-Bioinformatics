@@ -1,0 +1,85 @@
+# Assign values to variables
+x <- 10
+y <- 5
+
+# Arithmetic operations
+x + y
+x * y
+x / y
+
+# Using functions
+mean(c(2, 4, 6, 8))
+sum(c(1, 2, 3, 4))
+length(c(10, 20, 30))
+# Create numeric vector
+numbers <- c(1, 2, 3, 4, 5)
+
+# Create character vector
+names <- c("Alice", "Bob", "Charlie")
+
+# Access elements
+numbers[3]
+names[1]
+
+# Vector operations
+numbers * 2
+numbers + 10
+# Create matrix
+mat <- matrix(1:9, nrow = 3, ncol = 3)
+
+# View matrix
+mat
+
+# Access element
+mat[2, 3]
+
+# Row and column sums
+rowSums(mat)
+# Create a data frame
+df <- data.frame(
+  name = c("A", "B", "C"),
+  age = c(23, 35, 29),
+  score = c(88, 92, 85)
+)
+
+# View structure
+str(df)
+
+# Access column
+df$age
+
+# Access row
+df[1, ]
+# Read CSV file
+data <- read.csv("data.csv")
+
+# View first rows
+head(data)
+
+# Write to CSV
+write.csv(data, "output.csv", row.names = FALSE)
+# Select specific column
+data$age
+
+# Filter rows
+subset_data <- data[data$age > 30, ]
+
+# Multiple conditions
+subset_data <- data[data$age > 30 & data$score > 80, ]
+# Scatter plot
+plot(df$age, df$score,
+     main = "Age vs Score",
+     xlab = "Age",
+     ylab = "Score")
+
+# Histogram
+hist(df$score,
+     main = "Score Distribution",
+     xlab = "Scores")
+
+# Bar plot
+barplot(df$score,
+        names.arg = df$name,
+        main = "Scores by Name")
+
+colSums(mat)
