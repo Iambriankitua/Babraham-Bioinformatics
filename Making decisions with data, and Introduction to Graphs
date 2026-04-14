@@ -1,0 +1,66 @@
+# Example dataset
+data <- data.frame(
+  age = c(23, 35, 29, 40, 50),
+  gender = c("M", "F", "F", "M", "F"),
+  score = c(80, 90, 75, 88, 95)
+)
+
+# Logical comparisons
+data$age > 30
+data$score == 90
+
+# Combine conditions
+data$age > 30 & data$gender == "F"
+data$score > 80 | data$gender == "M"
+# Subset rows where age > 30
+subset1 <- data[data$age > 30, ]
+
+# Multiple conditions
+subset2 <- data[data$age > 30 & data$score > 85, ]
+
+# View subsets
+subset1
+subset2
+# Boxplot of scores by gender
+boxplot(score ~ gender, data = data,
+        main = "Score Distribution by Gender",
+        xlab = "Gender",
+        ylab = "Score")
+# Count gender frequency
+gender_counts <- table(data$gender)
+
+# Create barplot
+barplot(gender_counts,
+        main = "Gender Distribution",
+        xlab = "Gender",
+        ylab = "Count")
+# Scatterplot of age vs score
+plot(data$age, data$score,
+     main = "Age vs Score",
+     xlab = "Age",
+     ylab = "Score",
+     pch = 19)
+# Example time series
+time <- 1:5
+values <- c(10, 20, 15, 25, 30)
+
+# Line plot
+plot(time, values, type = "l",
+     main = "Trend Over Time",
+     xlab = "Time",
+     ylab = "Value")
+# Stripchart of scores
+stripchart(data$score,
+           method = "jitter",
+           main = "Score Distribution",
+           xlab = "Scores",
+           pch = 19)
+# Save plot to file
+png("scatterplot.png")
+plot(data$age, data$score)
+dev.off()
+
+# Save as PDF
+pdf("plot.pdf")
+boxplot(score ~ gender, data = data)
+dev.off()
