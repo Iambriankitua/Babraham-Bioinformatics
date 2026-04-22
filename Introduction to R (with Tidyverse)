@@ -1,0 +1,78 @@
+3 + 2
+2 / 7
+5^10
+10 -> x
+y <- 20
+
+x
+x + y
+
+x + y -> z
+"simon" -> my.name
+my.other.name <- "andrews"
+sqrt(10)
+
+# Help
+?sqrt
+??substring
+
+# Function arguments
+substr("simon", 2, 4)
+
+substr(x = "simon", start = 2, stop = 4)
+# Manual
+simple.vector <- c(1, 2, 4, 6, 3)
+
+# Repetition
+rep(2, times = 10)
+rep(c("dog", "cat"), each = 3)
+
+# Sequences
+seq(from = 2, by = 3, to = 14)
+4:20
+
+# Random data
+rnorm(10000)
+t.test(c(1, 5, 3), c(10, 15, 30))
+simple.vector <- c(1, 2, 4, 6, 3)
+
+simple.vector * 100
+c(2, 4, 7) + c(3, 5, 1)
+# Vector
+scores <- c(0.8, 1.2, 3.3, 1.8, 2.7)
+mean(scores)
+sd(scores)
+
+# List
+results <- list(
+  counts = c(100, 300, 200),
+  ratios = scores
+)
+
+mean(results$counts)
+# Install once (not in script)
+install.packages("tidyverse")
+
+# Load every session
+library(tidyverse)
+library(readr)
+
+data <- read_delim("file.txt")
+data_csv <- read_csv("file.csv")
+data_tsv <- read_tsv("file.tsv")
+
+write_csv(data_csv, "output.csv")
+library(dplyr)
+
+select(trumpton, FirstName, LastName, Weight)
+select(trumpton, 2, 4)
+select(trumpton, -LastName)
+filter(trumpton, Height >= 170)
+
+filter(trumpton, FirstName == "Chris")
+
+filter(transform.data, abs(difference) > 5)
+trumpton %>%
+  filter(Height >= 170) %>%
+  filter(FirstName == "Chris") %>%
+  select(Age, Weight)
