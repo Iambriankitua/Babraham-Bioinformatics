@@ -76,3 +76,47 @@ trumpton %>%
   filter(Height >= 170) %>%
   filter(FirstName == "Chris") %>%
   select(Age, Weight)
+library(tidyverse)
+
+# Example dataset
+data <- read_csv("data.csv")
+# Filter rows where age > 30
+data_filtered <- data %>%
+  filter(age > 30)
+
+# Multiple conditions
+data_filtered <- data %>%
+  filter(age > 30, sex == "Female")
+# Select specific columns
+data_selected <- data %>%
+  select(name, age, sex)
+# Create BMI-like variable
+data_mutated <- data %>%
+  mutate(bmi = weight / (height^2))
+# Arrange by age
+data_sorted <- data %>%
+  arrange(age)
+
+# Descending order
+data_sorted <- data %>%
+  arrange(desc(age))
+
+# Mean age by sex
+summary_data <- data %>%
+  group_by(sex) %>%
+  summarise(mean_age = mean(age, na.rm = TRUE))
+# Count by category
+counts <- data %>%
+  count(sex)
+
+# Alternative using summarise
+counts <- data %>%
+  group_by(sex) %>%
+  summarise(n = n())
+# Full workflow example
+result <- data %>%
+  filter(age > 18) %>%
+  mutate(bmi = weight / (height^2)) %>%
+  group_by(sex) %>%
+  summarise(avg_bmi = mean(bmi, na.rm = TRUE)) %>%
+  arrange(desc(avg_bmi))
