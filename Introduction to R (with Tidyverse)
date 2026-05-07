@@ -120,3 +120,106 @@ result <- data %>%
   group_by(sex) %>%
   summarise(avg_bmi = mean(bmi, na.rm = TRUE)) %>%
   arrange(desc(avg_bmi))
+# Install if necessary
+install.packages("tidyverse")
+
+# Load tidyverse
+library(tidyverse)
+# Create the trumpton tibble
+
+trumpton <- tibble(
+  LastName = c("Hugh", "Pew", "Barney",
+               "McGrew", "Cuthbert",
+               "Dibble", "Grub"),
+
+  FirstName = c("Chris", "Adam", "Daniel",
+                "Chris", "Carl",
+                "Liam", "Doug"),
+
+  Age = c(26, 32, 18, 48, 28, 35, 31),
+
+  Weight = c(90, 102, 88, 97, 91, 94, 89),
+
+  Height = c(175, 183, 168, 155, 188, 145, 164)
+)
+
+trumpton
+wide_data <- tibble(
+  Gene = c("ABC1", "DEF1"),
+  WT_1 = c(8.86, 29.60),
+  WT_2 = c(4.18, 41.22),
+  WT_3 = c(8.90, 36.15),
+  KO_1 = c(4.00, 11.18),
+  KO_2 = c(14.52, 16.68),
+  KO_3 = c(13.39, 1.64)
+)
+
+wide_data
+long_data <- tibble(
+  Gene = c(rep("ABC1", 6),
+           rep("DEF1", 6)),
+
+  Genotype = rep(c("WT", "KO"), each = 3, times = 2),
+
+  Replicate = rep(1:3, times = 4),
+
+  Value = c(
+    8.86, 4.18, 8.90,
+    4.00, 14.52, 13.39,
+    29.60, 41.22, 36.15,
+    11.18, 16.68, 1.64
+  )
+)
+
+long_data
+select(trumpton,
+       FirstName,
+       LastName,
+       Weight)
+select(trumpton, 2, 4)
+select(trumpton, -LastName)
+filter(trumpton, Height >= 170)
+filter(trumpton,
+       FirstName == "Chris")
+transform.data <- tibble(
+  WT = c(-5.11, 1.12, -3.99,
+         -4.18, -1.93,
+         -8.69, -0.67,
+         -1.15, -1.98,
+         -1.06),
+
+  KO = c(-3.29, -1.85, -3.77,
+         -2.46, -10.0,
+         -2.38, 2.73,
+         -2.59, 1.83,
+         0.372),
+
+  difference = c(
+    1.81, -2.97, 0.222,
+    1.72, -8.10,
+    6.31, 3.40,
+    -1.43, 3.80,
+    1.43
+  )
+)
+
+transform.data
+filter(transform.data,
+       difference > 5)
+filter(transform.data,
+       difference < -5)
+filter(trumpton,
+       Height >= 170) -> answer1
+
+filter(answer1,
+       FirstName == "Chris") -> answer2
+
+select(answer2,
+       Age,
+       Weight)
+trumpton %>%
+  select(-LastName)
+trumpton %>%
+  filter(Height >= 170) %>%
+  filter(FirstName == "Chris") %>%
+  select(Age, Weight)
